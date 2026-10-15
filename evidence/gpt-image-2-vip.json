@@ -1,0 +1,126 @@
+{
+  "task_id": "tsk_img_01M4YT1KKYW57KDV3891MH4KY7",
+  "model": "gpt-image-2-vip",
+  "quote_usd": 0.0019,
+  "receipt": {
+    "task_id": "tsk_img_01M4YT1KKYW57KDV3891MH4KY7",
+    "state": "completed",
+    "request": {
+      "model": "gpt-image-2-vip",
+      "prompt": "Original 2D illustrated character sheet, an adult friendly fox courier wearing a mustard raincoat and teal satchel, standing on a tiny stylized train platform in an autumn forest. Clean bold ink outlines, flat terracotta and jade colors, warm storybook mood, original character, no text, no logos, no copyrighted characters, square frame.",
+      "n": 1,
+      "size": "1:1",
+      "resolution": "1K",
+      "quality": "low"
+    },
+    "observations": [
+      {
+        "status": "queued",
+        "billing": {
+          "status": "pending"
+        }
+      },
+      {
+        "status": "queued",
+        "billing": {
+          "status": "pending"
+        }
+      },
+      {
+        "status": "queued",
+        "billing": {
+          "status": "pending"
+        }
+      },
+      {
+        "status": "in_progress",
+        "billing": {
+          "status": "pending"
+        }
+      },
+      {
+        "status": "in_progress",
+        "billing": {
+          "status": "pending"
+        }
+      },
+      {
+        "status": "in_progress",
+        "billing": {
+          "status": "pending"
+        }
+      },
+      {
+        "status": "in_progress",
+        "billing": {
+          "status": "pending"
+        }
+      },
+      {
+        "status": "in_progress",
+        "billing": {
+          "status": "pending"
+        }
+      },
+      {
+        "status": "in_progress",
+        "billing": {
+          "status": "pending"
+        }
+      },
+      {
+        "status": "in_progress",
+        "billing": {
+          "status": "pending"
+        }
+      },
+      {
+        "status": "in_progress",
+        "billing": {
+          "status": "pending"
+        }
+      },
+      {
+        "status": "in_progress",
+        "billing": {
+          "status": "pending"
+        }
+      },
+      {
+        "status": "in_progress",
+        "billing": {
+          "status": "pending"
+        }
+      },
+      {
+        "status": "in_progress",
+        "billing": {
+          "status": "pending"
+        }
+      },
+      {
+        "status": "completed",
+        "billing": null
+      }
+    ],
+    "billing": null
+  },
+  "actual_charge_usd": 0.0019,
+  "status": "completed",
+  "date": "2026-10-15",
+  "prompt": "Original 2D illustrated character sheet, an adult friendly fox courier wearing a mustard raincoat and teal satchel, standing on a tiny stylized train platform in an autumn forest. Clean bold ink outlines, flat terracotta and jade colors, warm storybook mood, original character, no text, no logos, no copyrighted characters, square frame.",
+  "output": "examples/gpt-image-2-vip.png",
+  "original_output": "examples/gpt-image-2-vip.original.png",
+  "actual_dimensions": [
+    1024,
+    1024
+  ],
+  "original_format": "PNG",
+  "source_sha256": "0c5d5a623266813904fad616ef4a005c9c725b4887950b7b365fad458c9653f1",
+  "elapsed_seconds": 133.41,
+  "scope": "独立API角色素材 → 原 stage-assets.mjs 本地导入；完整参考片分析与多Agent流程未验收。",
+  "quote_source": "GET /v1/pricing, 2026-10-15",
+  "actual_credits": 0.38,
+  "charge_source": "Owner-provided backend Task Logs screenshot, 2026-10-15; matched task ID prefix and model; 1 credit = USD 0.005",
+  "charge_confirmed_date": "2026-10-15"
+}

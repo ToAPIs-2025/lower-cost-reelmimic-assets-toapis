@@ -1,0 +1,61 @@
+{
+  "task_id": "tsk_img_01M4YT2523PGDFBY71EKW3RKJ5",
+  "model": "gemini-nano-banana-2.1",
+  "quote_usd": 0.015,
+  "receipt": {
+    "task_id": "tsk_img_01M4YT2523PGDFBY71EKW3RKJ5",
+    "state": "completed",
+    "request": {
+      "model": "gemini-nano-banana-2.1",
+      "prompt": "Original 2D illustrated character sheet, an adult friendly fox courier wearing a mustard raincoat and teal satchel, standing on a tiny stylized train platform in an autumn forest. Clean bold ink outlines, flat terracotta and jade colors, warm storybook mood, original character, no text, no logos, no copyrighted characters, square frame.",
+      "n": 1,
+      "size": "1:1",
+      "metadata": {
+        "resolution": "1K"
+      }
+    },
+    "observations": [
+      {
+        "status": "in_progress",
+        "billing": {
+          "status": "pending"
+        }
+      },
+      {
+        "status": "in_progress",
+        "billing": {
+          "status": "pending"
+        }
+      },
+      {
+        "status": "in_progress",
+        "billing": {
+          "status": "pending"
+        }
+      },
+      {
+        "status": "completed",
+        "billing": null
+      }
+    ],
+    "billing": null
+  },
+  "actual_charge_usd": 0.015,
+  "status": "completed",
+  "date": "2026-10-15",
+  "prompt": "Original 2D illustrated character sheet, an adult friendly fox courier wearing a mustard raincoat and teal satchel, standing on a tiny stylized train platform in an autumn forest. Clean bold ink outlines, flat terracotta and jade colors, warm storybook mood, original character, no text, no logos, no copyrighted characters, square frame.",
+  "output": "examples/gemini-nano-banana-2-1.png",
+  "original_output": "examples/gemini-nano-banana-2-1.jpg",
+  "actual_dimensions": [
+    1024,
+    1024
+  ],
+  "original_format": "JPEG",
+  "source_sha256": "60563f23e60db457e6465e1251d019d9b8f4044ac051e43acfa4b6605d97a59d",
+  "elapsed_seconds": 32.75,
+  "scope": "独立API角色素材 → 原 stage-assets.mjs 本地导入；完整参考片分析与多Agent流程未验收。",
+  "quote_source": "GET /v1/pricing, 2026-10-15",
+  "actual_credits": 3,
+  "charge_source": "Owner-provided backend Task Logs screenshot, 2026-10-15; matched task ID prefix and model; 1 credit = USD 0.005",
+  "charge_confirmed_date": "2026-10-15"
+}

@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-15",
+  "scope": "unchanged upstream local asset importer; full production pipeline not tested",
+  "runs": [
+    "✓ stage-assets: 0 copied, 6 already present → assets/\n",
+    "✓ stage-assets: 0 copied, 6 already present → assets/\n"
+  ],
+  "byte_checks": [
+    {
+      "file": "gemini-nano-banana-2-1.jpg",
+      "sha256": "60563f23e60db457e6465e1251d019d9b8f4044ac051e43acfa4b6605d97a59d"
+    },
+    {
+      "file": "gemini-nano-banana-2-1.png",
+      "sha256": "d4106704fdb9923e72605c20548343a86a2625513d37053e46cea7d9a5563aae"
+    },
+    {
+      "file": "gpt-image-2-5-flare.original.png",
+      "sha256": "71f5324a5d20932f3dd414752b10e64e50853eef997167710a81a6fe638ae2a8"
+    },
+    {
+      "file": "gpt-image-2-5-flare.png",
+      "sha256": "fb8756787c565c0bc060e530c4dde81b3b4f92e509ca524e4d2f2f73b68f3450"
+    },
+    {
+      "file": "gpt-image-2-vip.original.png",
+      "sha256": "0c5d5a623266813904fad616ef4a005c9c725b4887950b7b365fad458c9653f1"
+    },
+    {
+      "file": "gpt-image-2-vip.png",
+      "sha256": "59526ce808e1367d92b78270585f5aab21dc7e47bb949ccc43746fdda7cd44d0"
+    }
+  ]
+}
