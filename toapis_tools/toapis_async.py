@@ -90,7 +90,10 @@ class ToAPIsClient:
                 data=(f'--{boundary}\r\nContent-Disposition: form-data; name="file"; filename="reference.{extension}"\r\nContent-Type: {mime}\r\n\r\n'.encode()+raw+f'\r\n--{boundary}--\r\n'.encode())
                 urls.append(self._json('uploads/images',data,'multipart/form-data; boundary='+boundary)['data']['url'])
             request={**body,**({'reference_images':urls} if urls else {})}
-            receipt={'task_id':None,'state':'submitting','request':{**body,**({'reference_images':['<uploaded URL omitted>']*len(urls)} if urls else {})},'observations':[],'billing':None};save()
+            receipt={'task_id':None,'state':'submitting','request':{**body,**({'reference_images':['<uploaded URL omitted>']*len(urls)} if urls else {})},'observations':[],'billing':None}
+            try:
+                with receipt_file.open('x',encoding='utf-8') as first_receipt:json.dump(receipt,first_receipt,ensure_ascii=False,indent=2)
+            except FileExistsError:raise RuntimeError('A concurrent submission already owns this task receipt. Query it before trying again.') from None
             try:task=self._json('images/generations',request)
             except Exception as e:raise RuntimeError('Submission response unavailable; receipt retained. Reconcile Task Logs before a new POST.') from None
             receipt.update(task_id=task.get('id'),state='submitted');save()
@@ -99,6 +102,8 @@ class ToAPIsClient:
         task_id=receipt['task_id'];started=time.monotonic()
         while time.monotonic()-started<600:
             task=self._json('images/generations/'+quote(task_id,safe=''));status=task.get('status')
+            if task.get('model') and task['model']!=body['model']:raise RuntimeError('Returned task model does not match request')
+            receipt['returned_model']=task.get('model')
             receipt['observations'].append({'status':status,'billing':task.get('billing')});receipt.update(state=status,billing=task.get('billing'));save();self.last_receipt=receipt
             if status=='completed':
                 receipt['result_url']=task['result']['data'][0]['url'];save()

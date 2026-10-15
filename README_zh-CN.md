@@ -10,7 +10,7 @@
 
 ## 演示
 
-![真实输出与报价](screenshots/cn/01-models.png)
+![真实输出与实扣](screenshots/cn/01-models.png)
 
 ## 本次对应模型价格
 
@@ -20,20 +20,20 @@
 | [`gemini-nano-banana-2.1`](https://x.toapis.com/re15n) | 1K | 1024×1024 | $0.0150 | $0.0150 / 3 credits |
 | [`gpt-image-2.5-flare`](https://im25.toapis.com/re15f) | high / 1K | 1024×1024 | $0.0225 | $0.0225 / 4.5 credits |
 
-报价合计: **$0.0394**. 本次图片实扣已由后台截图确认；1积分=$0.005。除 global 为用户提供价表，其余为当天实时 `/v1/pricing`。不同模型/画质不是等效质量比较。
+本次图片实扣合计： **$0.0394**. 本次图片实扣已由后台截图确认；1积分=$0.005。除 global 为用户提供价表，其余为当天实时 `/v1/pricing`。不同模型/画质不是等效质量比较。
 
 ## 复现
 
-Python 3.11+; Node 22+ for Node/TS native-entry checks.
+环境：Python 3.11及以上；Node/TS原生入口验收另需Node 22及以上。
 
 ```bash
 python -m pip install Pillow
 python generate_case.py --model gpt-image-2-vip --prompt "An original product photograph, no text"
-# Dry-run: no network call. Set TOAPIS_API_KEY privately before --live.
+# 默认演练不联网。实测前在本机私下配置 TOAPIS_API_KEY，再显式加 --live。
 python generate_case.py --model gpt-image-2-vip --prompt "An original product photograph, no text" --run-id my-unique-case --output result.png --live
 ```
 
-`TOAPIS_BASE_URL=https://toapis.com` or `https://toapis.cn`; `/v1` is appended once. `TOAPIS_STATE_DIR` stores private durable task state. `TOAPIS_MAX_IMAGE_USD` defaults to 0.10. Never commit the key or private state.
+`TOAPIS_BASE_URL`可填`https://toapis.com`或`https://toapis.cn`，只补一次`/v1`。`TOAPIS_STATE_DIR`保存本地私有任务状态；`TOAPIS_MAX_IMAGE_USD`默认单图报价上限为0.10。不要提交Key或私有状态目录。
 
 ### 原生入口与范围
 
@@ -41,22 +41,22 @@ python generate_case.py --model gpt-image-2-vip --prompt "An original product ph
 node upstream/stage-assets.mjs --from examples --hyperframes demo-project
 ```
 
-The unchanged upstream importer was executed twice and all imported bytes were compared. See `evidence/native-import.json`. It is a local asset-import check, not the full ReelMimic analysis/agent/render workflow. Original 2D characters only.
+已连续两次运行未修改的上游导入脚本，并逐文件核对字节一致性，见`evidence/native-import.json`。本轮验证到本地素材导入，完整分析、Agent与渲染流程仍待验收；素材为原创2D角色。
 
-### API mapping
+### 接口映射
 
-`POST /v1/images/generations` → persist returned task ID → `GET /v1/images/generations/{id}` → download result without forwarding the API key to the CDN. Bearer authentication is used only for the API origin. No automatic POST retries. Uncertain submissions remain blocked until reconciled.
+`POST /v1/images/generations`提交一次并保存返回任务ID，再通过`GET /v1/images/generations/{id}`查询结果。下载CDN图片时不转发API Key；Bearer仅发给允许的API域名。没有自动POST重试，未确认是否受理的提交会保留并阻止重复生成。
 
-The adapter maps explicit pixel hints to aspect ratio and sends model-specific resolution fields. JPEG responses are preserved as original JPEG and separately converted to PNG for display; real pixel sizes are recorded. A requested 1K tier is not a guarantee of exactly 1024×1024 pixels.
+适配器将像素提示转换为画幅比例，并按模型发送分辨率字段。JPEG结果保留原始字节，另存PNG供展示；真实尺寸均写入记录。请求1K不保证返回恰好1024×1024。
 
 ## 证据与截图教程
 
-- [Per-task records](evidence/)
-- [Original outputs](examples/)
-- [Model comparison](screenshots/cn/01-models.png)
-- [API steps](screenshots/cn/02-api.png)
-- [Reuse and limits](screenshots/cn/03-reuse.png)
+- [逐任务记录](evidence/)
+- [原始输出](examples/)
+- [模型对比](screenshots/cn/01-models.png)
+- [API调用步骤](screenshots/cn/02-api.png)
+- [复用与验收边界](screenshots/cn/03-reuse.png)
 
-Upstream: [edenfunf/reelmimic](https://github.com/edenfunf/reelmimic/tree/bf59f0d7b60cc49cc328c67329300e9d265964d1), pinned `bf59f0d7b60cc49cc328c67329300e9d265964d1`. Community work; no author endorsement or existing partnership is implied. [Attribution](NOTICE.md).
+Upstream: [edenfunf/reelmimic](https://github.com/edenfunf/reelmimic/tree/bf59f0d7b60cc49cc328c67329300e9d265964d1), pinned `bf59f0d7b60cc49cc328c67329300e9d265964d1`. 社区独立示例，不代表作者背书或已有合作。[署名与许可](NOTICE.md)。
 
-[Dashboard-confirmed itemized image charges](evidence/actual-charges.json). Video submissions without task IDs are excluded and remain unreconciled.
+[后台确认的逐项图片消费](evidence/actual-charges.json)。未取得任务ID的视频提交不计入图片合计，仍单独待核。

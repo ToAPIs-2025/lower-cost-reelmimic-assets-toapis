@@ -10,7 +10,7 @@ External original 2D image generation followed by the unchanged upstream stage-a
 
 ## Demo
 
-![Real outputs and quotes](screenshots/en/01-models.png)
+![Real outputs and actual charges](screenshots/en/01-models.png)
 
 ## Prices for the tested models
 
@@ -20,7 +20,7 @@ External original 2D image generation followed by the unchanged upstream stage-a
 | [`gemini-nano-banana-2.1`](https://x.toapis.com/re15n) | 1K | 1024×1024 | $0.0150 | $0.0150 / 3 credits |
 | [`gpt-image-2.5-flare`](https://im25.toapis.com/re15f) | high / 1K | 1024×1024 | $0.0225 | $0.0225 / 4.5 credits |
 
-Quoted total: **$0.0394**. Image charges were confirmed from the backend screenshot; 1 credit = $0.005. Global uses owner-provided pricing; other quotes use the live `/v1/pricing` catalog. Different models and quality tiers do not imply equal quality.
+Actual image total: **$0.0394**. Image charges were confirmed from the backend screenshot; 1 credit = $0.005. Global uses owner-provided pricing; other quotes use the live `/v1/pricing` catalog. Different models and quality tiers do not imply equal quality.
 
 ## Reproduce
 
